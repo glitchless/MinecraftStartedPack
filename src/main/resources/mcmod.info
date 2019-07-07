@@ -1,0 +1,16 @@
+[
+{
+  "modid": "startedpack",
+  "name": "Started Pack Mod",
+  "description": "Mod for started item",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["LionZXY"],
+  "credits": "The Forge and FML guys, for making forge <3",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
