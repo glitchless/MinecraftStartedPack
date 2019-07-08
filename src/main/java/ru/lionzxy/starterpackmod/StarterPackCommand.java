@@ -1,4 +1,4 @@
-package ru.lionzxy.startedpackmod;
+package ru.lionzxy.starterpackmod;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -10,15 +10,15 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 
-public class StartedPackCommand extends CommandBase {
+public class StarterPackCommand extends CommandBase {
     @Override
     public String getName() {
-        return "startedpack";
+        return "starterpack";
     }
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return "/startedpack hand";
+        return "/starterpack hand";
     }
 
     @Override
@@ -39,14 +39,14 @@ public class StartedPackCommand extends CommandBase {
 
         final String itemName = itemStack.getItem().getRegistryName() + ":" + itemStack.getMetadata();
         final String finalString = itemName + ", " + itemStack.getCount();
-        StartedPack.startedItems = addToArray(StartedPack.startedItems, finalString);
+        StarterPack.starterItems = addToArray(StarterPack.starterItems, finalString);
         final StringBuilder allItems = new StringBuilder();
-        for (String item : StartedPack.startedItems) {
+        for (String item : StarterPack.starterItems) {
             allItems.append("- ").append(item).append('\n');
         }
-        sender.sendMessage(new TextComponentString("Add item \"" + finalString + "\" to started pack! All list: \n"
+        sender.sendMessage(new TextComponentString("Add item \"" + finalString + "\" to starter pack! All list: \n"
                 + allItems.toString()));
-        StartedPackMod.getInstance().invalidate();
+        StarterPackMod.getInstance().invalidate();
     }
 
     private static String[] addToArray(String[] array, String item) {

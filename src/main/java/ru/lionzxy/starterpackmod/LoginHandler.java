@@ -1,4 +1,4 @@
-package ru.lionzxy.startedpackmod;
+package ru.lionzxy.starterpackmod;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
@@ -12,26 +12,26 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class LoginHandler {
-    private List<ItemStack> startedItems;
+    private List<ItemStack> starterItems;
 
-    public LoginHandler(List<ItemStack> startedItems) {
-        this.startedItems = new ArrayList<>(startedItems);
+    public LoginHandler(List<ItemStack> starterItems) {
+        this.starterItems = new ArrayList<>(starterItems);
     }
 
-    public void invalidate(List<ItemStack> startedItems) {
-        this.startedItems = new ArrayList<>(startedItems);
+    public void invalidate(List<ItemStack> starterItems) {
+        this.starterItems = new ArrayList<>(starterItems);
     }
 
     @SubscribeEvent
     public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        final StartedPackWorldSavedData worldSavedData = StartedPackWorldSavedData.getInstance(event.player.world);
+        final StarterPackWorldSavedData worldSavedData = StarterPackWorldSavedData.getInstance(event.player.world);
         if (worldSavedData.checkFirstLogin(event.player)) {
-            for (ItemStack stack : startedItems) {
+            for (ItemStack stack : starterItems) {
                 event.player.inventory.addItemStackToInventory(stack.copy());
             }
             worldSavedData.markLogged(event.player);
-            if (!TextUtils.isEmpty(StartedPack.welcomeMessage)) {
-                event.player.sendMessage(new TextComponentString(StartedPack.welcomeMessage));
+            if (!TextUtils.isEmpty(StarterPack.welcomeMessage)) {
+                event.player.sendMessage(new TextComponentString(StarterPack.welcomeMessage));
             }
         }
     }

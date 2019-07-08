@@ -1,8 +1,8 @@
 [
 {
-  "modid": "startedpack",
-  "name": "Started Pack Mod",
-  "description": "Mod for started item",
+  "modid": "starterpack",
+  "name": "Starter Pack Mod",
+  "description": "Mod for starter item",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

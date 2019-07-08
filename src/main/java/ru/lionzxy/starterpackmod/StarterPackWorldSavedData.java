@@ -1,4 +1,4 @@
-package ru.lionzxy.startedpackmod;
+package ru.lionzxy.starterpackmod;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
@@ -13,16 +13,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class StartedPackWorldSavedData extends WorldSavedData {
-    private static final String DATA_NAME = StartedPackMod.MODID + "_startpack";
+public class StarterPackWorldSavedData extends WorldSavedData {
+    private static final String DATA_NAME = StarterPackMod.MODID + "_startpack";
     private static final String KEY_NBTLIST = "knownedPlayers";
     private final Set<String> knowedPlayers = new HashSet<>();
 
-    public StartedPackWorldSavedData() {
+    public StarterPackWorldSavedData() {
         super(DATA_NAME);
     }
 
-    public StartedPackWorldSavedData(String name) {
+    public StarterPackWorldSavedData(String name) {
         super(name);
     }
 
@@ -58,12 +58,12 @@ public class StartedPackWorldSavedData extends WorldSavedData {
         return compound;
     }
 
-    public static StartedPackWorldSavedData getInstance(World world) {
+    public static StarterPackWorldSavedData getInstance(World world) {
         final MapStorage mapStorage = world.getMapStorage();
-        StartedPackWorldSavedData instance = (StartedPackWorldSavedData) mapStorage.getOrLoadData(StartedPackWorldSavedData.class, DATA_NAME);
+        StarterPackWorldSavedData instance = (StarterPackWorldSavedData) mapStorage.getOrLoadData(StarterPackWorldSavedData.class, DATA_NAME);
 
         if (instance == null) {
-            instance = new StartedPackWorldSavedData();
+            instance = new StarterPackWorldSavedData();
             mapStorage.setData(DATA_NAME, instance);
         }
         return instance;

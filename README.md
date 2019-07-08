@@ -1,1 +1,1 @@
-# Minecraft Started Pack
+# Minecraft Starter Pack

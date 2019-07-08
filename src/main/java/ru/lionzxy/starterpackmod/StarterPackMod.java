@@ -1,4 +1,4 @@
-package ru.lionzxy.startedpackmod;
+package ru.lionzxy.starterpackmod;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -16,16 +16,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod(modid = StartedPackMod.MODID, name = StartedPackMod.NAME, version = StartedPackMod.VERSION, acceptableRemoteVersions = "*")
-public class StartedPackMod {
-    public static final String MODID = "startedpack";
-    public static final String NAME = "Started Pack Mod";
+@Mod(modid = StarterPackMod.MODID, name = StarterPackMod.NAME, version = StarterPackMod.VERSION, acceptableRemoteVersions = "*")
+public class StarterPackMod {
+    public static final String MODID = "starterpack";
+    public static final String NAME = "Starter Pack Mod";
     public static final String VERSION = "1.0";
-    private static StartedPackMod INSTANCE;
-    private List<ItemStack> startedItems = new ArrayList<>();
-    private LoginHandler loginHandler = new LoginHandler(startedItems);
+    private static StarterPackMod INSTANCE;
+    private List<ItemStack> starterItems = new ArrayList<>();
+    private LoginHandler loginHandler = new LoginHandler(starterItems);
 
-    public StartedPackMod() {
+    public StarterPackMod() {
         INSTANCE = this;
     }
 
@@ -37,23 +37,23 @@ public class StartedPackMod {
 
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
-        event.registerServerCommand(new StartedPackCommand());
+        event.registerServerCommand(new StarterPackCommand());
     }
 
     public void invalidate() {
-        startedItems.clear();
-        for (String item : StartedPack.startedItems) {
+        starterItems.clear();
+        for (String item : StarterPack.starterItems) {
             String[] parts = item.split(",");
             if (parts.length != 2) {
                 throw new RuntimeException("Item must be in format \"minecraft:dirt, 1\"");
             }
-            startedItems.add(getItemStackFromString(parts[0].trim(), Integer.parseInt(parts[1].trim())));
+            starterItems.add(getItemStackFromString(parts[0].trim(), Integer.parseInt(parts[1].trim())));
         }
-        loginHandler.invalidate(startedItems);
+        loginHandler.invalidate(starterItems);
         ConfigManager.sync(MODID, Config.Type.INSTANCE);
     }
 
-    public static StartedPackMod getInstance() {
+    public static StarterPackMod getInstance() {
         return INSTANCE;
     }
 
