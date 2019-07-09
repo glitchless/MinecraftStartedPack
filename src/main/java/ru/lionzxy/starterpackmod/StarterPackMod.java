@@ -20,7 +20,7 @@ import java.util.List;
 public class StarterPackMod {
     public static final String MODID = "starterpack";
     public static final String NAME = "Starter Pack Mod";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.0.1";
     private static StarterPackMod INSTANCE;
     private List<ItemStack> starterItems = new ArrayList<>();
     private LoginHandler loginHandler = new LoginHandler(starterItems);
